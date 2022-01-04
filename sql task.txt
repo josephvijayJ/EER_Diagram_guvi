@@ -1,0 +1,43 @@
+
+Creatting tables and inserting values
+
+--create table users;
+-- insert into users (name,email) values ('Ashwin','ashwin@gmail.com'),('Vijay','vijay@gmail.com');
+
+--create table attendance;
+-- insert into attendance (users_user_id,attendance_percentage) values(2,'85'),(3,'90'),(4,'95'),(5,'99');
+
+--create table codekata;
+-- insert into codekata (user_id,problems_solved) values (1,192),(2,122),(3,347),(4,175),(1,166);
+
+--create table company_drives;
+-- insert into company_drives (company_names,user_id) values ('PAYPAL',2),('GUVI',4),('GOOGLE',3),('NETFLIX',3),('YOUTUBE',5);
+
+--create table courses;
+-- INSERT INTO COURSES (course_name,user_id) values ('MERN STACK',1),('MEAN STACK' ,2),('DATA SCIENCE',3),('CYBER SECURITY',4),('AUTOMATION TESTING',5)
+
+--create table mentors;
+-- INSERT INTO MENTORS (MENTOR_NAME,USERS_USER_ID) VALUES ('Arun Prakash',1),('Nagaraj',2),('Vinay',3),('Sheerhan',4),('Karthik',5);
+
+--create table topics;
+-- INSERT INTO topics (user_id,course_id,topics) VALUES (1,1,'Asynchronous'),(2,2,'ES6 FUNCTIONS'),(3,3,'LOOPS AND CONDITIONS'),(4,4,'REACT BASICS'),(5,5,'EXPRESS Js');
+
+
+To display the number of company drives attended by the user
+
+SELECT users.user_id,users.name, company_drives.company_names
+FROM users
+INNER JOIN company_drives ON users.user_id=company_drives.user_id;
+
+number of problems solved by the user
+
+SELECT users.user_id,users.name, codekata.problems_solved
+FROM users
+INNER JOIN codekata ON users.user_id=codekata.user_id;
+
+To list all the mentors
+SELECT mentor_name FROM guvi.mentors;
+
+number of students assigned for a mentor
+
+select mentors.mentor_name,users.name as student_name ,count(mentors.users_user_id) from users join mentors on  users.user_id=mentors.users_user_id group by mentors.users_user_id
